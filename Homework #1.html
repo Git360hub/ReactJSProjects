@@ -13,6 +13,13 @@
         let deepCopy = JSON.parse(JSON.stringify(person1));
         deepCopy.favoriteColor = "blue";
         console.log(deepCopy);
+
+        function displayInfo(name, favoriteHobby) {
+            console.log(`My name is ${name} and my favorite hobby is ${favoriteHobby}`);
+        }
+
+        displayInfo("Desseray Stepski", "gardening");
+
     </script>
     
 </body>
@@ -20,10 +27,23 @@
 
 <!--
 What are the primitive types in JS ? give example of each.
-        myfavouritenumber = 7 #This variable represents my favourite number. (Whole Number)
-        Float = 1.234 #(Float)
-        String = "My name is Desseray Stepski" #(String)
-        This_is_homework = True # Represents if this is homework or not
+        Whole Number myfavouritenumber = 7 #This variable represents my favourite number. 
+        Float myfavoritenumber = 1.234 #(Float)
+        String myname = "My name is Desseray Stepski" #(String)
+        Boolean This_is_homework = True # Represents if this is homework or not #(Boolean)
+        BigInt mybigint = 12345678901234567890n # Represents a large integer #(BigInt)
+        Undefined myvariable # Represents a variable that has not been assigned a value #(Undefined)
+        Null mynull = None # Represents the intentional absence of any object value #(Null)
+        Symbol mysymbol = Symbol("description") # Represents a unique and immutable value #(Symbol)
+
+
         When should you use an object ?
-When should you use an  array ?
--->
+        You should use an object when you want to store multiple related values as key-value pairs. 
+        Objects are ideal for representing complex entities with various attributes. 
+        For example, a car object might have properties like make, model, year, and color.
+
+        When should you use an array ?
+        You should use an array when you want to store a list of items or a collection of values. 
+        Arrays are ideal for representing ordered data and can hold multiple values of the same type. 
+        For example, an array of colors might look like this: ["red", "green", "blue"].
+        -->
