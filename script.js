@@ -7,7 +7,7 @@ const students = [
 ];
 
 students.forEach(student => {
-  student.status = student.grade >= 60 ? "pass" : "fail";
+  student.grade = Math.min(student.grade + 5, 100);
 });
 
 console.log(students);

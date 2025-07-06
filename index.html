@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Students with Status</title>
+  <title>Curved Student Grades</title>
 </head>
 <body>
-  <h1>Students with Status</h1>
+  <h1>Curved Student Grades</h1>
   <ul id="students-list"></ul>
 
   <script>
     const students = [
-      { name: "Alice", grade: 85 },
-      { name: "Bob", grade: 58 },
-      { name: "Charlie", grade: 95 },
-      { name: "David", grade: 45 },
-      { name: "Eva", grade: 72 },
+      { name: "Alice", grade: 85, status: "pass" },
+      { name: "Bob", grade: 58, status: "fail" },
+      { name: "Charlie", grade: 95, status: "pass" },
+      { name: "David", grade: 45, status: "fail" },
+      { name: "Eva", grade: 72, status: "pass" }
     ];
 
-    // Add "status" property in-place
+    // Curve grades by adding 5 points, but do not exceed 100
     students.forEach(student => {
-      student.status = student.grade >= 60 ? "pass" : "fail";
+      student.grade = Math.min(student.grade + 5, 100);
     });
 
     // Display the modified students array in the HTML
@@ -32,5 +32,3 @@
   </script>
 </body>
 </html>
-
-
