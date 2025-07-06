@@ -6,12 +6,8 @@ const students = [
   { name: "Eva", grade: 72 },
 ];
 
-function getTopStudent(students) {
-  if (students.length === 0) return null; // Handle empty array
-  return students.reduce((top, student) => 
-    student.grade > top.grade ? student : top
-  );
-}
+students.forEach(student => {
+  student.status = student.grade >= 60 ? "pass" : "fail";
+});
 
-const topStudent = getTopStudent(students);
-console.log(topStudent);
+console.log(students);

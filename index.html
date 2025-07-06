@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Top Student</title>
+  <title>Students with Status</title>
 </head>
 <body>
-  <h1>Top Student</h1>
-  <p id="top-student"></p>
+  <h1>Students with Status</h1>
+  <ul id="students-list"></ul>
 
   <script>
     const students = [
@@ -17,22 +17,20 @@
       { name: "Eva", grade: 72 },
     ];
 
-    function getTopStudent(students) {
-      if (students.length === 0) return null;
-      return students.reduce((top, student) =>
-        student.grade > top.grade ? student : top
-      );
-    }
+    // Add "status" property in-place
+    students.forEach(student => {
+      student.status = student.grade >= 60 ? "pass" : "fail";
+    });
 
-    const topStudent = getTopStudent(students);
-
-    const p = document.getElementById('top-student');
-    if (topStudent) {
-      p.textContent = `${topStudent.name} has the highest grade: ${topStudent.grade}`;
-    } else {
-      p.textContent = "No students found.";
-    }
+    // Display the modified students array in the HTML
+    const ul = document.getElementById('students-list');
+    students.forEach(student => {
+      const li = document.createElement('li');
+      li.textContent = `${student.name} - Grade: ${student.grade}, Status: ${student.status}`;
+      ul.appendChild(li);
+    });
   </script>
 </body>
 </html>
+
 
