@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Greet Function Example</title>
+  <title>Personalized Greetings</title>
 </head>
 <body>
-  <h1>Greeting</h1>
-  <p id="greeting"></p>
+  <h1>Personalized Greetings</h1>
+  <ul id="greetings-list"></ul>
 
   <script>
-    
-    function greet() {
-      console.log("Hello, student!");
-      
-      document.getElementById('greeting').textContent = "Hello, student!";
+
+    function greet(name) {
+      console.log(`Hello, ${name}!`);
+  
+      const ul = document.getElementById('greetings-list');
+      const li = document.createElement('li');
+      li.textContent = `Hello, ${name}!`;
+      ul.appendChild(li);
     }
 
-    
-    greet();
-  </script>
-</body>
-</html>
+    greet("Alice");
+
