@@ -1,18 +1,8 @@
-function operate(a, b, operation) {
-  return operation(a, b);
-}
+// Task 7: Create and use an anonymous function
+const anonFunc = function() {
+  console.log("Anonymous function executed");
+};
 
-function add(x, y) {
-  return x + y;
-}
+// Call the anonymous function
+anonFunc();
 
-function subtract(x, y) {
-  return x - y;
-}
-
-function multiply(x, y) {
-  return x * y;
-}
-console.log(operate(10, 5, add));     
-console.log(operate(10, 5, subtract)); 
-console.log(operate(10, 5, multiply)); 

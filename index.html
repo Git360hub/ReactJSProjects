@@ -2,42 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Callback Operations Example</title>
+  <title>Anonymous Function Example</title>
 </head>
 <body>
-  <h1>Callback Operations Example</h1>
-  <ul id="results-list"></ul>
+  <h1>Anonymous Function Example</h1>
+  <p id="anon-result"></p>
 
   <script>
-    function operate(a, b, operation) {
-      return operation(a, b);
-    }
+    const anonFunc = function() {
+      console.log("Anonymous function executed");
+      document.getElementById('anon-result').textContent = "Anonymous function executed";
+    };
 
-    function add(x, y) {
-      return x + y;
-    }
-
-    function subtract(x, y) {
-      return x - y;
-    }
-
-    function multiply(x, y) {
-      return x * y;
-    }
-
-    const results = [
-      { desc: "Add", value: operate(10, 5, add) },
-      { desc: "Subtract", value: operate(10, 5, subtract) },
-      { desc: "Multiply", value: operate(10, 5, multiply) }
-    ];
-   
-    const ul = document.getElementById('results-list');
-    results.forEach(result => {
-      console.log(`${result.desc}: ${result.value}`);
-      const li = document.createElement('li');
-      li.textContent = `${result.desc}: ${result.value}`;
-      ul.appendChild(li);
-    });
+    anonFunc();
   </script>
 </body>
 </html>
