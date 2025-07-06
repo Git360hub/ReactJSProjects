@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Anonymous Function Example</title>
+  <title>Arrow Function Example</title>
 </head>
 <body>
-  <h1>Anonymous Function Example</h1>
-  <p id="anon-result"></p>
+  <h1>Arrow Function Example</h1>
+  <p id="arrow-result"></p>
 
   <script>
-    const anonFunc = function() {
+    const anonFunc = () => {
       console.log("Anonymous function executed");
-      document.getElementById('anon-result').textContent = "Anonymous function executed";
+      document.getElementById('arrow-result').textContent = "Anonymous function executed";
     };
-
     anonFunc();
   </script>
 </body>

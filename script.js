@@ -1,8 +1,8 @@
-// Task 7: Create and use an anonymous function
-const anonFunc = function() {
+
+const anonFunc = () => {
   console.log("Anonymous function executed");
 };
 
-// Call the anonymous function
 anonFunc();
+
 
