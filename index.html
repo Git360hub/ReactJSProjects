@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Student Pass/Fail Status</title>
+  <title>Student Names</title>
 </head>
 <body>
-  <h1>Student Pass/Fail Status</h1>
-  <ul id="status-list"></ul>
+  <h1>Student Names</h1>
+  <ul id="student-names"></ul>
 
   <script>
     const students = [
@@ -17,14 +17,10 @@
       { name: "Eva", grade: 72 },
     ];
 
-    const ul = document.getElementById('status-list');
+    const ul = document.getElementById('student-names');
     students.forEach(student => {
       const li = document.createElement('li');
-      if (student.grade >= 60) {
-        li.textContent = `${student.name} passed`;
-      } else {
-        li.textContent = `${student.name} failed`;
-      }
+      li.textContent = student.name;
       ul.appendChild(li);
     });
   </script>

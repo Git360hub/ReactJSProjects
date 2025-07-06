@@ -6,10 +6,6 @@ const students = [
   { name: "Eva", grade: 72 },
 ];
 
-students.forEach(student => {
-  if (student.grade >= 60) {
-    console.log(`${student.name} passed`);
-  } else {
-    console.log(`${student.name} failed`);
-  }
-});
+for (let i = 0; i < students.length; i++) {
+  console.log(students[i].name);
+}
