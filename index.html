@@ -2,28 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Callback Function Example</title>
+  <title>Callback Operations Example</title>
 </head>
 <body>
-  <h1>Callback Function Example</h1>
-  <p id="callback-result"></p>
+  <h1>Callback Operations Example</h1>
+  <ul id="results-list"></ul>
 
   <script>
-    // Outer function that accepts another function as a parameter
-    function outerFunction(callback) {
-      // Call the callback function
-      callback();
+    function operate(a, b, operation) {
+      return operation(a, b);
     }
 
-    // Callback function that logs a message
-    function myCallback() {
-      console.log("Callback function was called");
-      // Also display the message on the page
-      document.getElementById('callback-result').textContent = "Callback function was called";
+    function add(x, y) {
+      return x + y;
     }
 
-    // Call the outer function and pass the inner function as an argument
-    outerFunction(myCallback);
+    function subtract(x, y) {
+      return x - y;
+    }
+
+    function multiply(x, y) {
+      return x * y;
+    }
+
+    const results = [
+      { desc: "Add", value: operate(10, 5, add) },
+      { desc: "Subtract", value: operate(10, 5, subtract) },
+      { desc: "Multiply", value: operate(10, 5, multiply) }
+    ];
+   
+    const ul = document.getElementById('results-list');
+    results.forEach(result => {
+      console.log(`${result.desc}: ${result.value}`);
+      const li = document.createElement('li');
+      li.textContent = `${result.desc}: ${result.value}`;
+      ul.appendChild(li);
+    });
   </script>
 </body>
 </html>

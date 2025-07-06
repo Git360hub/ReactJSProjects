@@ -1,9 +1,18 @@
-function outerFunction(callback) {
-  callback();
+function operate(a, b, operation) {
+  return operation(a, b);
 }
 
-function myCallback() {
-  console.log("Callback function was called");
+function add(x, y) {
+  return x + y;
 }
 
-outerFunction(myCallback);
+function subtract(x, y) {
+  return x - y;
+}
+
+function multiply(x, y) {
+  return x * y;
+}
+console.log(operate(10, 5, add));     
+console.log(operate(10, 5, subtract)); 
+console.log(operate(10, 5, multiply)); 
