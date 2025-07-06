@@ -6,8 +6,10 @@ const students = [
   { name: "Eva", grade: 72 },
 ];
 
-const total = students.reduce((sum, student) => sum + student.grade, 0);
-const average = total / students.length;
-const roundedAverage = average.toFixed(2);
-
-console.log(roundedAverage);
+students.forEach(student => {
+  if (student.grade >= 60) {
+    console.log(`${student.name} passed`);
+  } else {
+    console.log(`${student.name} failed`);
+  }
+});
