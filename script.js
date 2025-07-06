@@ -6,6 +6,12 @@ const students = [
   { name: "Eva", grade: 72 },
 ];
 
-for (let i = 0; i < students.length; i++) {
-  console.log(students[i].name);
+function getTopStudent(students) {
+  if (students.length === 0) return null; // Handle empty array
+  return students.reduce((top, student) => 
+    student.grade > top.grade ? student : top
+  );
 }
+
+const topStudent = getTopStudent(students);
+console.log(topStudent);

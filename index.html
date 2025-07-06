@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Student Names</title>
+  <title>Top Student</title>
 </head>
 <body>
-  <h1>Student Names</h1>
-  <ul id="student-names"></ul>
+  <h1>Top Student</h1>
+  <p id="top-student"></p>
 
   <script>
     const students = [
@@ -17,12 +17,22 @@
       { name: "Eva", grade: 72 },
     ];
 
-    const ul = document.getElementById('student-names');
-    students.forEach(student => {
-      const li = document.createElement('li');
-      li.textContent = student.name;
-      ul.appendChild(li);
-    });
+    function getTopStudent(students) {
+      if (students.length === 0) return null;
+      return students.reduce((top, student) =>
+        student.grade > top.grade ? student : top
+      );
+    }
+
+    const topStudent = getTopStudent(students);
+
+    const p = document.getElementById('top-student');
+    if (topStudent) {
+      p.textContent = `${topStudent.name} has the highest grade: ${topStudent.grade}`;
+    } else {
+      p.textContent = "No students found.";
+    }
   </script>
 </body>
 </html>
+
