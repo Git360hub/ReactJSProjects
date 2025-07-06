@@ -1,13 +1,6 @@
-const students = [
-  { name: "Alice", grade: 85 },
-  { name: "Bob", grade: 58 },
-  { name: "Charlie", grade: 95 },
-  { name: "David", grade: 45 },
-  { name: "Eva", grade: 72 },
-];
 
-students.forEach(student => {
-  student.grade = Math.min(student.grade + 5, 100);
-});
+function greet() {
+  console.log("Hello, student!");
+}
 
-console.log(students);
+greet();

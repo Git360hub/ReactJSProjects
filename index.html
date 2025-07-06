@@ -2,33 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Curved Student Grades</title>
+  <title>Greet Function Example</title>
 </head>
 <body>
-  <h1>Curved Student Grades</h1>
-  <ul id="students-list"></ul>
+  <h1>Greeting</h1>
+  <p id="greeting"></p>
 
   <script>
-    const students = [
-      { name: "Alice", grade: 85, status: "pass" },
-      { name: "Bob", grade: 58, status: "fail" },
-      { name: "Charlie", grade: 95, status: "pass" },
-      { name: "David", grade: 45, status: "fail" },
-      { name: "Eva", grade: 72, status: "pass" }
-    ];
+    
+    function greet() {
+      console.log("Hello, student!");
+      
+      document.getElementById('greeting').textContent = "Hello, student!";
+    }
 
-    // Curve grades by adding 5 points, but do not exceed 100
-    students.forEach(student => {
-      student.grade = Math.min(student.grade + 5, 100);
-    });
-
-    // Display the modified students array in the HTML
-    const ul = document.getElementById('students-list');
-    students.forEach(student => {
-      const li = document.createElement('li');
-      li.textContent = `${student.name} - Grade: ${student.grade}, Status: ${student.status}`;
-      ul.appendChild(li);
-    });
+    
+    greet();
   </script>
 </body>
 </html>
