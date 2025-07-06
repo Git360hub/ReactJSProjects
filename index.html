@@ -2,23 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Recursive Factorial Example</title>
+  <title>Recursive Factorial Demo</title>
 </head>
 <body>
-  <h1>Recursive Factorial Example</h1>
-  <ul id="factorial-results"></ul>
+  <h1>Recursive Factorial Demo</h1>
+  <ul id="factorial-list"></ul>
 
   <script>
-
     function factorial(n) {
-      if (n === 0 || n === 1) {
+      if (n === 0) {
         return 1;
       }
       return n * factorial(n - 1);
     }
 
-    const testCases = [0, 1, 5, 7];
-    const ul = document.getElementById('factorial-results');
+    const testCases = [0, 5, 7];
+    const ul = document.getElementById('factorial-list');
 
     testCases.forEach(n => {
       const result = factorial(n);
