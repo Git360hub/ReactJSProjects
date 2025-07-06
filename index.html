@@ -2,37 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>createMultiplier Closure Example</title>
+  <title>once Function Example</title>
 </head>
 <body>
-  <h1>createMultiplier Closure Example</h1>
-  <ul id="results"></ul>
+  <h1>once Function Example</h1>
+  <button id="greet-btn">Greet</button>
+  <ul id="output"></ul>
 
   <script>
-    function createMultiplier(factor) {
-      return function(number) {
-        return number * factor;
+    function once(fn) {
+      let called = false;
+      return function(...args) {
+        if (!called) {
+          called = true;
+          return fn(...args);
+        }
       };
     }
 
-    const double = createMultiplier(2);
-    const triple = createMultiplier(3);
-    const half = createMultiplier(0.5);
-
-    const results = [
-      `double(5): ${double(5)}`,
-      `triple(5): ${triple(5)}`,
-      `half(10): ${half(10)}`
-    ];
-
-    const ul = document.getElementById('results');
-    results.forEach(result => {
-      console.log(result);
+    function greet(name) {
+      const msg = "Hello, " + name + "!";
+      console.log(msg);
+      const ul = document.getElementById('output');
       const li = document.createElement('li');
-      li.textContent = result;
+      li.textContent = msg;
       ul.appendChild(li);
+    }
+
+    const greetOnce = once(greet);
+
+    greetOnce("Ygor");  
+    greetOnce("John");  
+    greetOnce("Jane");  
+    document.getElementById('greet-btn').addEventListener('click', function() {
+      greetOnce("Button User");
     });
   </script>
 </body>
 </html>
-
