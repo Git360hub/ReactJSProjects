@@ -2,27 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Personalized Greetings</title>
+  <title>Scope Demonstration</title>
 </head>
 <body>
-  <h1>Personalized Greetings</h1>
-  <ul id="greetings-list"></ul>
+  <h1>Global vs Local Scope</h1>
+  <p id="global"></p>
+  <p id="local"></p>
 
   <script>
-   
-    function greet(name) {
-      console.log(`Hello, ${name}!`);
-      const ul = document.getElementById('greetings-list');
-      const li = document.createElement('li');
-      li.textContent = `Hello, ${name}!`;
-      ul.appendChild(li);
+    
+    let globalVar = "I am a global variable";
+
+    function showScope() {
+     
+      let localVar = "I am a local variable";
+      
+      console.log(globalVar); 
+      console.log(localVar); 
+
+      document.getElementById('global').textContent = `Global: ${globalVar}`;
+      document.getElementById('local').textContent = `Local: ${localVar}`;
     }
 
-    greet("Dess");
-    greet("Mindy");
-    greet("George");
+    showScope();
+
   </script>
 </body>
 </html>
+
 
 
