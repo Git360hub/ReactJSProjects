@@ -1,6 +1,9 @@
-function greet(name) {
-  console.log(`Hello, ${name}!`);
+function outerFunction(callback) {
+  callback();
 }
-greet("Dess");
-greet("Mindy");
-greet("George");
+
+function myCallback() {
+  console.log("Callback function was called");
+}
+
+outerFunction(myCallback);

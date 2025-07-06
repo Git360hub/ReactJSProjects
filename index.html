@@ -2,33 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scope Demonstration</title>
+  <title>Callback Function Example</title>
 </head>
 <body>
-  <h1>Global vs Local Scope</h1>
-  <p id="global"></p>
-  <p id="local"></p>
+  <h1>Callback Function Example</h1>
+  <p id="callback-result"></p>
 
   <script>
-    
-    let globalVar = "I am a global variable";
-
-    function showScope() {
-     
-      let localVar = "I am a local variable";
-      
-      console.log(globalVar); 
-      console.log(localVar); 
-
-      document.getElementById('global').textContent = `Global: ${globalVar}`;
-      document.getElementById('local').textContent = `Local: ${localVar}`;
+    // Outer function that accepts another function as a parameter
+    function outerFunction(callback) {
+      // Call the callback function
+      callback();
     }
 
-    showScope();
+    // Callback function that logs a message
+    function myCallback() {
+      console.log("Callback function was called");
+      // Also display the message on the page
+      document.getElementById('callback-result').textContent = "Callback function was called";
+    }
 
+    // Call the outer function and pass the inner function as an argument
+    outerFunction(myCallback);
   </script>
 </body>
 </html>
-
-
-
