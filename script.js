@@ -1,9 +1,6 @@
-function square(number) {
-  return number * number;
+function greet(name) {
+  console.log(`Hello, ${name}!`);
 }
-
-// Call the function and store the result in a variable
-const result = square(7);
-
-// Then log the result
-console.log(result); // Output: 49
+greet("Dess");
+greet("Mindy");
+greet("George");

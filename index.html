@@ -2,22 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Square Function Example</title>
+  <title>Personalized Greetings</title>
 </head>
 <body>
-  <h1>Square of a Number</h1>
-  <p id="square-result"></p>
+  <h1>Personalized Greetings</h1>
+  <ul id="greetings-list"></ul>
 
   <script>
-    function square(number) {
-      return number * number;
+   
+    function greet(name) {
+      console.log(`Hello, ${name}!`);
+      const ul = document.getElementById('greetings-list');
+      const li = document.createElement('li');
+      li.textContent = `Hello, ${name}!`;
+      ul.appendChild(li);
     }
 
-    const result = square(7);
-
-    console.log(result);
-
-    document.getElementById('square-result').textContent = `The square of 7 is ${result}.`;
+    greet("Dess");
+    greet("Mindy");
+    greet("George");
   </script>
 </body>
 </html>
