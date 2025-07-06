@@ -2,30 +2,194 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Recursive Factorial Demo</title>
+  <title>Dynamic Guest List App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f7fa;
+      margin: 0;
+      padding: 40px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin-bottom: 24px;
+      color: #333;
+    }
+    .guest-form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .guest-form input[type="text"] {
+      padding: 8px 12px;
+      font-size: 1rem;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      width: 220px;
+      transition: border-color 0.2s;
+    }
+    .guest-form input[type="text"]:focus {
+      outline: none;
+      border-color: #4a90e2;
+    }
+    .guest-form button {
+      padding: 8px 16px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      background: #4a90e2;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .guest-form button:hover,
+    .guest-form button:focus {
+      background: #357ab8;
+    }
+    .guest-list-container {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 24px 32px;
+      min-width: 340px;
+      max-width: 100%;
+    }
+    ul#guest-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .guest-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      transition: background 0.2s;
+    }
+    .guest-item:last-child {
+      border-bottom: none;
+    }
+    .guest-name {
+      flex: 1;
+      font-size: 1.08rem;
+      color: #333;
+      transition: color 0.2s;
+    }
+    .guest-item.confirmed .guest-name {
+      color: #2e7d32;
+      font-weight: bold;
+    }
+    .guest-item.confirmed {
+      background: #e6f9ea;
+    }
+    .guest-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .guest-actions button {
+      padding: 4px 10px;
+      font-size: 0.98rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .confirm-btn {
+      background: #a5d6a7;
+      color: #17632c;
+    }
+    .confirm-btn:hover,
+    .confirm-btn:focus {
+      background: #81c784;
+    }
+    .remove-btn {
+      background: #ffcdd2;
+      color: #b71c1c;
+    }
+    .remove-btn:hover,
+    .remove-btn:focus {
+      background: #e57373;
+      color: #fff;
+    }
+    
+    @media (max-width: 480px) {
+      .guest-list-container {
+        padding: 12px 4px;
+        min-width: unset;
+      }
+      .guest-form input[type="text"] {
+        width: 120px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Recursive Factorial Demo</h1>
-  <ul id="factorial-list"></ul>
+  <h1>Guest List App</h1>
+  <form class="guest-form" id="guest-form" autocomplete="off">
+    <input type="text" id="guest-input" placeholder="Enter guest name" required />
+    <button type="submit">Add Guest</button>
+  </form>
+  <div class="guest-list-container">
+    <ul id="guest-list"></ul>
+  </div>
 
   <script>
-    function factorial(n) {
-      if (n === 0) {
-        return 1;
+
+    const guestForm = document.getElementById('guest-form');
+    const guestInput = document.getElementById('guest-input');
+    const guestList = document.getElementById('guest-list');
+
+    guestForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = guestInput.value.trim();
+      if (name) {
+        addGuest(name);
+        guestInput.value = '';
+        guestInput.focus();
       }
-      return n * factorial(n - 1);
-    }
-
-    const testCases = [0, 5, 7];
-    const ul = document.getElementById('factorial-list');
-
-    testCases.forEach(n => {
-      const result = factorial(n);
-      console.log(`factorial(${n}) = ${result}`);
-      const li = document.createElement('li');
-      li.textContent = `factorial(${n}) = ${result}`;
-      ul.appendChild(li);
     });
+
+    function addGuest(name) {
+      const li = document.createElement('li');
+      li.className = 'guest-item';
+
+      const span = document.createElement('span');
+      span.className = 'guest-name';
+      span.textContent = name;
+
+      const actions = document.createElement('div');
+      actions.className = 'guest-actions';
+
+      const confirmBtn = document.createElement('button');
+      confirmBtn.type = 'button';
+      confirmBtn.className = 'confirm-btn';
+      confirmBtn.textContent = 'Confirm';
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'remove-btn';
+      removeBtn.textContent = 'Remove';
+
+      confirmBtn.addEventListener('click', function() {
+        li.classList.toggle('confirmed');
+      });
+
+      removeBtn.addEventListener('click', function() {
+        li.remove();
+      });
+
+      actions.appendChild(confirmBtn);
+      actions.appendChild(removeBtn);
+
+      li.appendChild(span);
+      li.appendChild(actions);
+
+      guestList.appendChild(li);
+    }
   </script>
 </body>
 </html>
