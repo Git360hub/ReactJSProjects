@@ -6,5 +6,6 @@ const students = [
   { name: "Eva", grade: 72 },
 ];
 
-const studentStrings = students.map(student => `${student.name}: ${student.grade}`);
-console.log(studentStrings);
+const passedStudents = students.filter(student => student.grade >= 60);
+
+console.log(passedStudents);

@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Student Data Processor</title>
+  <title>Passing Students</title>
 </head>
 <body>
-  <h1>Student Grades</h1>
-  <ul id="student-list"></ul>
+  <h1>Students Who Passed</h1>
+  <ul id="passed-students"></ul>
 
   <script>
     const students = [
@@ -17,13 +17,14 @@
       { name: "Eva", grade: 72 },
     ];
 
-    const studentStrings = students.map(student => `${student.name}: ${student.grade}`);
 
-    const list = document.getElementById('student-list');
-    studentStrings.forEach(str => {
+    const passedStudents = students.filter(student => student.grade >= 60);
+
+    const ul = document.getElementById('passed-students');
+    passedStudents.forEach(student => {
       const li = document.createElement('li');
-      li.textContent = str;
-      list.appendChild(li);
+      li.textContent = `${student.name}: ${student.grade}`;
+      ul.appendChild(li);
     });
   </script>
 </body>
