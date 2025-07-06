@@ -2,40 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>once Function Example</title>
+  <title>Recursive Factorial Example</title>
 </head>
 <body>
-  <h1>once Function Example</h1>
-  <button id="greet-btn">Greet</button>
-  <ul id="output"></ul>
+  <h1>Recursive Factorial Example</h1>
+  <ul id="factorial-results"></ul>
 
   <script>
-    function once(fn) {
-      let called = false;
-      return function(...args) {
-        if (!called) {
-          called = true;
-          return fn(...args);
-        }
-      };
+
+    function factorial(n) {
+      if (n === 0 || n === 1) {
+        return 1;
+      }
+      return n * factorial(n - 1);
     }
 
-    function greet(name) {
-      const msg = "Hello, " + name + "!";
-      console.log(msg);
-      const ul = document.getElementById('output');
+    const testCases = [0, 1, 5, 7];
+    const ul = document.getElementById('factorial-results');
+
+    testCases.forEach(n => {
+      const result = factorial(n);
+      console.log(`factorial(${n}) = ${result}`);
       const li = document.createElement('li');
-      li.textContent = msg;
+      li.textContent = `factorial(${n}) = ${result}`;
       ul.appendChild(li);
-    }
-
-    const greetOnce = once(greet);
-
-    greetOnce("Ygor");  
-    greetOnce("John");  
-    greetOnce("Jane");  
-    document.getElementById('greet-btn').addEventListener('click', function() {
-      greetOnce("Button User");
     });
   </script>
 </body>

@@ -1,24 +1,16 @@
-function once(fn) {
-  let called = false;
-  return function(...args) {
-    if (!called) {
-      called = true;
-      return fn(...args);
-    }
-    // After the first call, do nothing and return undefined
-  };
+function factorial(n) {
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+
+  return n * factorial(n - 1);
 }
 
-// Example usage:
-function greet(name) {
-  console.log("Hello, " + name + "!");
-}
+console.log(factorial(0)); 
+console.log(factorial(1)); 
+console.log(factorial(5)); 
+console.log(factorial(7)); 
 
-const greetOnce = once(greet);
-
-greetOnce("Ygor"); // Output: Hello, Ygor!
-greetOnce("John"); // No output
-greetOnce("Jane"); // No output
 
 
 
