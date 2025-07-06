@@ -2,18 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Arrow Function Example</title>
+  <title>createMultiplier Closure Example</title>
 </head>
 <body>
-  <h1>Arrow Function Example</h1>
-  <p id="arrow-result"></p>
+  <h1>createMultiplier Closure Example</h1>
+  <ul id="results"></ul>
 
   <script>
-    const anonFunc = () => {
-      console.log("Anonymous function executed");
-      document.getElementById('arrow-result').textContent = "Anonymous function executed";
-    };
-    anonFunc();
+    function createMultiplier(factor) {
+      return function(number) {
+        return number * factor;
+      };
+    }
+
+    const double = createMultiplier(2);
+    const triple = createMultiplier(3);
+    const half = createMultiplier(0.5);
+
+    const results = [
+      `double(5): ${double(5)}`,
+      `triple(5): ${triple(5)}`,
+      `half(10): ${half(10)}`
+    ];
+
+    const ul = document.getElementById('results');
+    results.forEach(result => {
+      console.log(result);
+      const li = document.createElement('li');
+      li.textContent = result;
+      ul.appendChild(li);
+    });
   </script>
 </body>
 </html>
+

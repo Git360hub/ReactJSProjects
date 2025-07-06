@@ -1,8 +1,5 @@
-
-const anonFunc = () => {
-  console.log("Anonymous function executed");
-};
-
-anonFunc();
+function createMultiplier(factor) {
+  return number => number * factor;
+}
 
 
