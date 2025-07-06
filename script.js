@@ -6,6 +6,8 @@ const students = [
   { name: "Eva", grade: 72 },
 ];
 
-const passedStudents = students.filter(student => student.grade >= 60);
+const total = students.reduce((sum, student) => sum + student.grade, 0);
+const average = total / students.length;
+const roundedAverage = average.toFixed(2);
 
-console.log(passedStudents);
+console.log(roundedAverage);

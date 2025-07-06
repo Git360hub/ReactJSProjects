@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Passing Students</title>
+  <title>Class Average Grade</title>
 </head>
 <body>
-  <h1>Students Who Passed</h1>
-  <ul id="passed-students"></ul>
+  <h1>Class Average Grade</h1>
+  <p id="average-grade"></p>
 
   <script>
     const students = [
@@ -17,15 +17,11 @@
       { name: "Eva", grade: 72 },
     ];
 
+    const total = students.reduce((sum, student) => sum + student.grade, 0);
+    const average = total / students.length;
+    const roundedAverage = average.toFixed(2);
 
-    const passedStudents = students.filter(student => student.grade >= 60);
-
-    const ul = document.getElementById('passed-students');
-    passedStudents.forEach(student => {
-      const li = document.createElement('li');
-      li.textContent = `${student.name}: ${student.grade}`;
-      ul.appendChild(li);
-    });
+    document.getElementById('average-grade').textContent = `Average Grade: ${roundedAverage}`;
   </script>
 </body>
 </html>
